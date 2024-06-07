@@ -1,39 +1,36 @@
-package online.shopping.system.product.service.dao;
+package online.shopping.system.product.service.entity;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
 import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
-import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
-import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.annotation.LastModifiedDate;
 import org.springframework.format.annotation.DateTimeFormat;
 
-import java.math.BigDecimal;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Entity
-@Table(schema = "product")
-@Getter
-@Setter
+@Table(schema = "product_category")
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class Product {
+public class ProductCategory {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "product_id")
-    private int productId;
+    @Column(name = "category_id")
+    private int categoryId;
 
-    @Column(name = "product_code")
-    private String productCode;
+    @Column(name = "category_code")
+    private String categoryCode;
 
     @Column(name = "name")
     private String name;
@@ -41,17 +38,11 @@ public class Product {
     @Column(name = "description")
     private String description;
 
-    @Column(name = "image")
-    private String image;
+    @Column(name = "parent_category_id")
+    private String parentCategoryId;
 
-    @Column(name = "price")
-    private BigDecimal price;
-
-    @Column(name = "available_item_count")
-    private String availableItemCount;
-
-    @Column(name = "category_id")
-    private String categoryId;
+    @Column(name = "is_leaf")
+    private boolean isLeaf;
 
     @Column(name = "created_on")
     @CreatedDate
@@ -63,7 +54,7 @@ public class Product {
     @DateTimeFormat(pattern = "yyyy-MM-dd HH:mm:ss")
     private LocalDateTime lastModifiedOn;
 
-    @ManyToOne
-    private ProductCategory productCategory;
+    @OneToMany
+    private List<Product> productList;
 
 }
