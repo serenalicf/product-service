@@ -1,4 +1,4 @@
-package online.shopping.system.product.service;
+package online.shopping.system.product_service;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
