@@ -30,7 +30,7 @@ public class Product {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
-    private int productId;
+    private Integer productId;
 
     @Column(name = "product_code")
     private String productCode;
@@ -48,10 +48,10 @@ public class Product {
     private BigDecimal price;
 
     @Column(name = "available_item_count")
-    private String availableItemCount;
+    private Integer availableItemCount;
 
     @Column(name = "category_id")
-    private String categoryId;
+    private Integer categoryId;
 
     @Column(name = "created_on")
     @CreatedDate
